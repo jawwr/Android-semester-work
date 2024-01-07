@@ -1,7 +1,11 @@
 package com.example.semester.di
 
 import android.app.Application
-import com.example.semester.presentation.HomeFragment
+import com.example.semester.di.modules.AppBindsModule
+import com.example.semester.di.modules.DatabaseModule
+import com.example.semester.di.modules.NetworkModule
+import com.example.semester.di.modules.ViewModelModule
+import com.example.semester.presentation.DishFragment
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -10,7 +14,7 @@ import javax.inject.Singleton
 @Component(modules = [AppModule::class])
 @Singleton
 interface AppComponent {
-    fun inject(fragment: HomeFragment)
+    fun inject(fragment: DishFragment)
 
     @Component.Builder
     interface Builder {
@@ -22,7 +26,10 @@ interface AppComponent {
 
 @Module(
     includes = [
-
+        ViewModelModule::class,
+        NetworkModule::class,
+        DatabaseModule::class,
+        AppBindsModule::class
     ]
 )
 class AppModule

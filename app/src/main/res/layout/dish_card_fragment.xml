@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/main_color"
+        android:elevation="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/back_button" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/dish_photo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="1000dp"
+        android:adjustViewBounds="true"
+
+        android:elevation="1dp"
+        android:padding="5dp"
+        android:scaleType="centerCrop"
+
+        android:src="@drawable/dont_exist_dish_photo"
+
+        app:layout_constraintCircle="@id/dish_card"
+        app:layout_constraintCircleRadius="230dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+
+        app:shapeAppearanceOverlay="@style/circleImageView"
+        app:strokeColor="@android:color/darker_gray"
+        app:strokeWidth="5dp" />
+
+    <View
+        android:id="@+id/dish_card"
+        android:layout_width="match_parent"
+        android:layout_height="470dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/dish_card_shape"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/dish_card_title"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dish_photo"
+        tool:text="Lorem Ipsum Dolor Sit Amet" />
+
+    <View
+        android:id="@+id/dish_card_title_stroke"
+        android:layout_width="164dp"
+        android:layout_height="2dp"
+        android:background="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dish_card_title" />
+
+    <ImageView
+        android:id="@+id/kitchen_scale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/kitchen_scale"
+        app:layout_constraintEnd_toStartOf="@id/calories"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dish_card_title_stroke" />
+
+    <TextView
+        android:id="@+id/dish_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/kitchen_scale"
+        app:layout_constraintStart_toEndOf="@id/kitchen_scale"
+        tool:text="200g" />
+
+    <ImageView
+        android:id="@+id/calories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/calories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/kitchen_scale"
+        app:layout_constraintTop_toBottomOf="@id/dish_card_title_stroke" />
+
+    <TextView
+        android:id="@+id/dish_calories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="200g"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/calories"
+        app:layout_constraintStart_toEndOf="@id/calories" />
+
+    <TextView
+        android:id="@+id/dish_ingredient_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40sp"
+        android:layout_marginTop="20sp"
+        android:text="Ingredients"
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/kitchen_scale" />
+
+    <TextView
+        android:id="@+id/dish_ingredient"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40sp"
+        android:gravity="start"
+        android:textColor="@color/text_color"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dish_ingredient_title"
+        tool:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
+
+    <ProgressBar
+        android:id="@+id/progress_categories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="99dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
