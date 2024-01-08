@@ -3,6 +3,7 @@ package com.example.semester.data.database.entities
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.semester.data.models.Dish
+import com.example.semester.data.models.DishCart
 
 @Entity(tableName = "cart_dishes")
 data class DishCartEntity(
@@ -22,6 +23,16 @@ data class DishCartEntity(
                 price = dish.price,
                 count = 1,
                 photoUrl = dish.photoUrl
+            )
+
+        fun fromDishCart(dishCart: DishCart) =
+            DishCartEntity(
+                id = dishCart.id,
+                dishId = dishCart.dishId,
+                title = dishCart.title,
+                price = dishCart.price,
+                count = dishCart.count,
+                photoUrl = dishCart.photoUrl
             )
     }
 }

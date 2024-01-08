@@ -9,15 +9,29 @@ import coil.load
 import com.example.semester.data.models.DishCart
 import com.example.semester.databinding.DishCartItemBinding
 
-class DishCartAdapter :
+class DishCartAdapter(
+    private val onDecreaseButtonClick: (DishCart) -> Unit,
+    private val onIncreaseButtonClick: (DishCart) -> Unit,
+    private val onCloseButtonClick: (DishCart) -> Unit
+) :
     ListAdapter<DishCart, DishCartAdapter.DishCartViewHolder>(DishCartDiffUtil()) {
     class DishCartViewHolder(
-        private val binding: DishCartItemBinding
+        private val binding: DishCartItemBinding,
+        private val onDecreaseButtonClick: (DishCart) -> Unit,
+        private val onIncreaseButtonClick: (DishCart) -> Unit,
+        private val onCloseButtonClick: (DishCart) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(dish: DishCart) = with(binding) {
             dishPhoto.load(dish.photoUrl)
             dishTitle.text = dish.title
             dishCost.text = "${dish.price * dish.count}"
+            closeButton.setOnClickListener {
+                onCloseButtonClick(dish)
+            }
+
+            counter.setOnDecreaseButtonClickListener { onDecreaseButtonClick(dish) }
+            counter.setOnIncreaseButtonClickListener { onIncreaseButtonClick(dish) }
+            counter.count = "${dish.count}"
         }
     }
 
@@ -33,7 +47,12 @@ class DishCartAdapter :
         val context = parent.context
         val inflater = LayoutInflater.from(context)
         val binding = DishCartItemBinding.inflate(inflater, parent, false)
-        return DishCartViewHolder(binding)
+        return DishCartViewHolder(
+            binding,
+            onDecreaseButtonClick,
+            onIncreaseButtonClick,
+            onCloseButtonClick
+        )
     }
 
     override fun onBindViewHolder(holder: DishCartViewHolder, position: Int) {

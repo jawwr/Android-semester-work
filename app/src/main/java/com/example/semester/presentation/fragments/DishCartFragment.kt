@@ -19,7 +19,11 @@ import javax.inject.Inject
 
 class DishCartFragment : Fragment(R.layout.cart_fragment) {
     private val binding: CartFragmentBinding by viewBinding()
-    private val adapter: DishCartAdapter = DishCartAdapter()
+    private val adapter: DishCartAdapter = DishCartAdapter(
+        ::onDecreaseDish,
+        ::onIncreaseDish,
+        ::onCloseButtonClick
+    )
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -37,6 +41,29 @@ class DishCartFragment : Fragment(R.layout.cart_fragment) {
     override fun onAttach(context: Context) {
         context.appComponent.inject(this)
         super.onAttach(context)
+    }
+
+    private fun onDecreaseDish(dish: DishCart) {
+        if (dish.count == 1) {
+            viewModel.deleteDishFromCart(dish)
+        } else {
+            viewModel.updateDishCart(
+                dish.copy(count = dish.count - 1)
+            )
+        }
+        viewModel.getAllDishInCart()
+    }
+
+    private fun onIncreaseDish(dish: DishCart) {
+        viewModel.updateDishCart(
+            dish.copy(count = dish.count + 1)
+        )
+        viewModel.getAllDishInCart()
+    }
+
+    private fun onCloseButtonClick(dish: DishCart) {
+        viewModel.deleteDishFromCart(dish)
+        viewModel.getAllDishInCart()
     }
 
     private fun showDishes(uiState: UiState<List<DishCart>>) = when (uiState) {

@@ -30,7 +30,7 @@ class DishCardFragment : Fragment(R.layout.dish_card_fragment) {
         viewModel.dish.observe(viewLifecycleOwner) {
             showDish(it)
         }
-        viewModel.getDishById(1)
+        viewModel.getDishById(2)
     }
 
     override fun onAttach(context: Context) {

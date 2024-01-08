@@ -6,12 +6,16 @@ import com.example.semester.data.repository.DishCartRepository
 import com.example.semester.data.repository.DishCartRepositoryImpl
 import com.example.semester.data.repository.DishRepository
 import com.example.semester.data.repository.DishRepositoryImpl
+import com.example.semester.domain.DeleteDishFromCartUseCase
+import com.example.semester.domain.DeleteDishFromCartUseCaseImpl
 import com.example.semester.domain.GetAllCartDishUseCase
 import com.example.semester.domain.GetAllCartDishUseCaseImpl
 import com.example.semester.domain.GetAllDishesUseCase
 import com.example.semester.domain.GetAllDishesUseCaseImpl
 import com.example.semester.domain.GetDishByIdUseCase
 import com.example.semester.domain.GetDishByIdUseCaseImpl
+import com.example.semester.domain.UpdateDishInCartUseCase
+import com.example.semester.domain.UpdateDishInCartUseCaseImpl
 import com.example.semester.domain.UpsertDishToCartUseCase
 import com.example.semester.domain.UpsertDishToCartUseCaseImpl
 import dagger.Binds
@@ -37,6 +41,12 @@ interface AppBindsModule {
 
     @Binds
     fun bindGetAllCartDishUseCase(useCase: GetAllCartDishUseCaseImpl): GetAllCartDishUseCase
+
+    @Binds
+    fun bindDeleteDishFromCartUseCase(useCase: DeleteDishFromCartUseCaseImpl): DeleteDishFromCartUseCase
+
+    @Binds
+    fun bindUpdateDishCartUseCase(useCase: UpdateDishInCartUseCaseImpl): UpdateDishInCartUseCase
 
     companion object {
         @Provides

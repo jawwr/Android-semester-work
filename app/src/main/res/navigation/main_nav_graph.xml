@@ -9,9 +9,9 @@
         android:name="com.example.semester.presentation.fragments.HomeFragment"
         android:label="HomeFragment" />
     <fragment
-        android:id="@+id/dishFragment"
+        android:id="@+id/dishCardFragment"
         android:name="com.example.semester.presentation.fragments.DishCardFragment"
-        android:label="DishFragment" />
+        android:label="DishCardFragment" />
     <fragment
         android:id="@+id/dishCartFragment"
         android:name="com.example.semester.presentation.fragments.DishCartFragment"
