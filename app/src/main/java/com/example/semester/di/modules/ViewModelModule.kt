@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.semester.di.viewModel.ViewModelFactory
 import com.example.semester.di.viewModel.ViewModelKey
+import com.example.semester.presentation.viewModel.DishCartViewModel
 import com.example.semester.presentation.viewModel.DishViewModel
 import dagger.Binds
 import dagger.Module
@@ -18,4 +19,9 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(DishViewModel::class)
     fun bindDishViewModel(viewModel: DishViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DishCartViewModel::class)
+    fun bindDishCartViewModel(viewModel: DishCartViewModel): ViewModel
 }

@@ -1,4 +1,4 @@
-package com.example.semester.presentation
+package com.example.semester.presentation.fragments
 
 import androidx.fragment.app.Fragment
 import com.example.semester.R

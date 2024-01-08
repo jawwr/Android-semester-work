@@ -21,15 +21,7 @@ class DishViewModel @Inject constructor(
 
     fun getDishById(id: Int) {
         viewModelScope.launch {
-            _dish.postValue(getDishByIdUseCase(id))
+            _dish.postResult(getDishByIdUseCase(id))
         }
     }
-}
-
-fun <T> MutableLiveData<UiState<T>>.postValue(value: Result<T?>) {
-    this.postValue(if (value.isSuccess) {
-        value.getOrNull()?.let { UiState.Success(it) } ?: UiState.Failure("Failure value")
-    } else {
-        UiState.Failure("Something went wrong")
-    })
 }

@@ -1,4 +1,4 @@
-package com.example.semester.presentation
+package com.example.semester.presentation.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -12,16 +12,18 @@ import com.example.semester.data.models.Dish
 import com.example.semester.databinding.DishCardFragmentBinding
 import com.example.semester.di.appComponent
 import com.example.semester.di.viewModel.ViewModelFactory
+import com.example.semester.presentation.viewModel.DishCartViewModel
 import com.example.semester.presentation.viewModel.DishViewModel
 import com.example.semester.utils.UiState
 import javax.inject.Inject
 
-class DishFragment : Fragment(R.layout.dish_card_fragment) {
+class DishCardFragment : Fragment(R.layout.dish_card_fragment) {
     private val binding: DishCardFragmentBinding by viewBinding()
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
     private val viewModel: DishViewModel by viewModels { viewModelFactory }
+    private val dishCartViewModel: DishCartViewModel by viewModels { viewModelFactory }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,6 +46,8 @@ class DishFragment : Fragment(R.layout.dish_card_fragment) {
             binding.dishCalories.text = "${dish.kcal} kcal"
             binding.dishIngredient.text = dish.description
             binding.dishPhoto.load(dish.photoUrl)
+
+            dishCartViewModel.upsertDishToCart(dish)
 
             binding.progressCategories.visibility = View.GONE
         }

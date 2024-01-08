@@ -5,4 +5,5 @@
     <color name="main_color">#389C9A</color>
     <color name="text_color">#424242</color>
     <color name="line_color">#424242</color>
+    <color name="close_button_color">#F9C6C6</color>
 </resources>
