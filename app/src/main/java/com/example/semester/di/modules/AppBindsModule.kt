@@ -14,6 +14,8 @@ import com.example.semester.domain.GetAllDishesUseCase
 import com.example.semester.domain.GetAllDishesUseCaseImpl
 import com.example.semester.domain.GetDishByIdUseCase
 import com.example.semester.domain.GetDishByIdUseCaseImpl
+import com.example.semester.domain.GetDishInCartByIdUseCase
+import com.example.semester.domain.GetDishInCartByIdUseCaseImpl
 import com.example.semester.domain.UpdateDishInCartUseCase
 import com.example.semester.domain.UpdateDishInCartUseCaseImpl
 import com.example.semester.domain.UpsertDishToCartUseCase
@@ -47,6 +49,9 @@ interface AppBindsModule {
 
     @Binds
     fun bindUpdateDishCartUseCase(useCase: UpdateDishInCartUseCaseImpl): UpdateDishInCartUseCase
+
+    @Binds
+    fun bindGetDishInCartByIdUseCase(useCase: GetDishInCartByIdUseCaseImpl): GetDishInCartByIdUseCase
 
     companion object {
         @Provides

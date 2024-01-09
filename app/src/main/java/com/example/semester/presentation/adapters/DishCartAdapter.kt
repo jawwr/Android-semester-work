@@ -24,14 +24,14 @@ class DishCartAdapter(
         fun bind(dish: DishCart) = with(binding) {
             dishPhoto.load(dish.photoUrl)
             dishTitle.text = dish.title
-            dishCost.text = "${dish.price * dish.count}"
+            dishCost.text = "%,.2f".format(dish.price * dish.count)
             closeButton.setOnClickListener {
                 onCloseButtonClick(dish)
             }
 
             counter.setOnDecreaseButtonClickListener { onDecreaseButtonClick(dish) }
             counter.setOnIncreaseButtonClickListener { onIncreaseButtonClick(dish) }
-            counter.count = "${dish.count}"
+            counter.count = dish.count
         }
     }
 

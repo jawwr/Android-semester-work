@@ -15,6 +15,9 @@ interface DishCartDao {
     @Query("SELECT * FROM cart_dishes")
     suspend fun getAllDishesInCart(): List<DishCartEntity>
 
+    @Query("SELECT * FROM cart_dishes WHERE dishId=:id")
+    suspend fun getDishInCartById(id: Int): DishCartEntity?
+
     @Delete
     suspend fun deleteDishFromCart(dishCartEntity: DishCartEntity)
 

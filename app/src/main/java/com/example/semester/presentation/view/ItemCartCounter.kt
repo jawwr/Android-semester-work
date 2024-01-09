@@ -25,9 +25,9 @@ class ItemCartCounter @JvmOverloads constructor(
         onIncreaseButtonClick = func
     }
 
-    var count: String = "0"
+    var count: Int = 0
         set(value) {
-            binding.count.text = value
+            binding.count.text = "$value"
             field = value
         }
 

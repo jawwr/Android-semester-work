@@ -6,4 +6,5 @@
     <color name="text_color">#424242</color>
     <color name="line_color">#424242</color>
     <color name="close_button_color">#F9C6C6</color>
+    <color name="dish_cost_color">#D9D9D9</color>
 </resources>

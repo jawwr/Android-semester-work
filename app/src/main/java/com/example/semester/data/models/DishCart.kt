@@ -20,5 +20,14 @@ data class DishCart(
                 entity.count,
                 entity.photoUrl
             )
+
+        fun fromDish(dish: Dish, count: Int = 1) =
+            DishCart(
+                dishId = dish.id,
+                title = dish.title,
+                price = dish.price,
+                count = count,
+                photoUrl = dish.photoUrl
+            )
     }
 }
