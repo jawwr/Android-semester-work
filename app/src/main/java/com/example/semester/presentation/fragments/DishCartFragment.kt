@@ -14,6 +14,7 @@ import com.example.semester.di.appComponent
 import com.example.semester.di.viewModel.ViewModelFactory
 import com.example.semester.presentation.adapters.DishCartAdapter
 import com.example.semester.presentation.viewModel.DishCartViewModel
+import com.example.semester.presentation.viewModel.OrderViewModel
 import com.example.semester.utils.UiState
 import javax.inject.Inject
 
@@ -28,6 +29,7 @@ class DishCartFragment : Fragment(R.layout.cart_fragment) {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
     private val viewModel: DishCartViewModel by viewModels { viewModelFactory }
+    private val orderViewModel: OrderViewModel by viewModels { viewModelFactory }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -70,6 +72,14 @@ class DishCartFragment : Fragment(R.layout.cart_fragment) {
         is UiState.Success -> {
             val dishes = uiState.value
             adapter.submitList(dishes)
+            val totalCost = dishes.sumOf { it.price * it.count }
+            binding.totalCost.text = "%,.2f".format(totalCost)
+
+            binding.payButton.setOnClickListener {
+                val ids = dishes.map { it.dishId }.toSet()
+                orderViewModel.createOrder(ids)
+                viewModel.deleteDishesByIdIn(ids)
+            }
 
             binding.progressCategories.visibility = View.GONE
         }

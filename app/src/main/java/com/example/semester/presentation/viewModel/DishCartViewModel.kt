@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.semester.data.models.Dish
 import com.example.semester.data.models.DishCart
 import com.example.semester.domain.DeleteDishFromCartUseCase
+import com.example.semester.domain.DeleteDishesFromCartByIdInUseCase
 import com.example.semester.domain.GetAllCartDishUseCase
 import com.example.semester.domain.UpdateDishInCartUseCase
 import com.example.semester.domain.UpsertDishToCartUseCase
@@ -15,20 +16,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DishCartViewModel @Inject constructor(
-    private val upsertDishToCartUseCase: UpsertDishToCartUseCase,
     private val getAllCartDishUseCase: GetAllCartDishUseCase,
     private val deleteDishFromCartUseCase: DeleteDishFromCartUseCase,
-    private val updateDishInCartUseCase: UpdateDishInCartUseCase
+    private val updateDishInCartUseCase: UpdateDishInCartUseCase,
+    private val deleteDishesFromCartByIdInUseCase: DeleteDishesFromCartByIdInUseCase
 ) : ViewModel() {
     private val _dishesInCart = MutableLiveData<UiState<List<DishCart>>>(UiState.Loading)
     val dishInCart: LiveData<UiState<List<DishCart>>>
         get() = _dishesInCart
-
-    fun upsertDishToCart(dish: Dish) {
-        viewModelScope.launch {
-            upsertDishToCartUseCase(dish)
-        }
-    }
 
     fun getAllDishInCart() {
         viewModelScope.launch {
@@ -45,6 +40,13 @@ class DishCartViewModel @Inject constructor(
     fun updateDishCart(dishCart: DishCart) {
         viewModelScope.launch {
             updateDishInCartUseCase(dishCart)
+        }
+    }
+
+    fun deleteDishesByIdIn(ids: Collection<Int>) {
+        viewModelScope.launch {
+            deleteDishesFromCartByIdInUseCase(ids)
+            _dishesInCart.post(listOf())
         }
     }
 }

@@ -14,6 +14,8 @@ interface DishCartRepository {
     suspend fun deleteDishFromCart(dishCart: DishCart)
 
     suspend fun getDishInCartById(id: Int): DishCart?
+
+    suspend fun deleteDishFromCartByIdIn(ids: Collection<Int>)
 }
 
 class DishCartRepositoryImpl @Inject constructor(
@@ -33,4 +35,7 @@ class DishCartRepositoryImpl @Inject constructor(
 
     override suspend fun getDishInCartById(id: Int): DishCart? =
         dao.getDishInCartById(id)?.let { DishCart.fromEntity(it) }
+
+    override suspend fun deleteDishFromCartByIdIn(ids: Collection<Int>) =
+        dao.deleteDishesFromCartByIdIn(ids)
 }

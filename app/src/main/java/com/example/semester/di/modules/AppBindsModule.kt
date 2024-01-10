@@ -6,8 +6,14 @@ import com.example.semester.data.repository.DishCartRepository
 import com.example.semester.data.repository.DishCartRepositoryImpl
 import com.example.semester.data.repository.DishRepository
 import com.example.semester.data.repository.DishRepositoryImpl
+import com.example.semester.data.repository.OrderRepository
+import com.example.semester.data.repository.OrderRepositoryImpl
+import com.example.semester.domain.CreateOrderUseCase
+import com.example.semester.domain.CreateOrderUseCaseImpl
 import com.example.semester.domain.DeleteDishFromCartUseCase
 import com.example.semester.domain.DeleteDishFromCartUseCaseImpl
+import com.example.semester.domain.DeleteDishesFromCartByIdInUseCase
+import com.example.semester.domain.DeleteDishesFromCartByIdInUseCaseImpl
 import com.example.semester.domain.GetAllCartDishUseCase
 import com.example.semester.domain.GetAllCartDishUseCaseImpl
 import com.example.semester.domain.GetAllDishesUseCase
@@ -16,6 +22,8 @@ import com.example.semester.domain.GetDishByIdUseCase
 import com.example.semester.domain.GetDishByIdUseCaseImpl
 import com.example.semester.domain.GetDishInCartByIdUseCase
 import com.example.semester.domain.GetDishInCartByIdUseCaseImpl
+import com.example.semester.domain.GetOrderByIdUseCase
+import com.example.semester.domain.GetOrderByIdUseCaseImpl
 import com.example.semester.domain.UpdateDishInCartUseCase
 import com.example.semester.domain.UpdateDishInCartUseCaseImpl
 import com.example.semester.domain.UpsertDishToCartUseCase
@@ -52,6 +60,18 @@ interface AppBindsModule {
 
     @Binds
     fun bindGetDishInCartByIdUseCase(useCase: GetDishInCartByIdUseCaseImpl): GetDishInCartByIdUseCase
+
+    @Binds
+    fun bindOrderRepository(orderRepository: OrderRepositoryImpl): OrderRepository
+
+    @Binds
+    fun bindCreateOrderUseCase(useCase: CreateOrderUseCaseImpl): CreateOrderUseCase
+
+    @Binds
+    fun bindGetOrderByIdUseCase(useCase: GetOrderByIdUseCaseImpl): GetOrderByIdUseCase
+
+    @Binds
+    fun bindDeleteDishesFromCartByIdInUseCase(useCase: DeleteDishesFromCartByIdInUseCaseImpl): DeleteDishesFromCartByIdInUseCase
 
     companion object {
         @Provides
