@@ -1,6 +1,7 @@
 package com.example.semester.di.modules
 
 import com.example.semester.data.api.DishService
+import com.example.semester.data.api.OrderService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -11,7 +12,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module
 class NetworkModule {
     @Provides
-    fun provideDishService(): DishService = Retrofit.Builder()
+    fun provideDishService(): DishService = getRetrofitInstance()
+        .create(DishService::class.java)
+
+    @Provides
+    fun provideOrderService(): OrderService = getRetrofitInstance()
+        .create(OrderService::class.java)
+
+    private fun getRetrofitInstance(): Retrofit = Retrofit.Builder()
         .client(
             OkHttpClient.Builder()
                 .addInterceptor(
@@ -21,5 +29,4 @@ class NetworkModule {
         .baseUrl("http://10.0.2.2:8080/api/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-        .create(DishService::class.java)
 }

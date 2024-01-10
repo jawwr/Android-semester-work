@@ -36,7 +36,6 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
 
         app:shapeAppearanceOverlay="@style/circleImageView"
@@ -115,6 +114,37 @@
         app:layout_constraintBottom_toBottomOf="@id/calories"
         app:layout_constraintStart_toEndOf="@id/calories" />
 
+    <View
+        android:id="@+id/dish_cost_card"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:background="@drawable/dish_cost_shape"
+        app:layout_constraintEnd_toEndOf="@id/dish_in_cart_counter"
+        app:layout_constraintTop_toTopOf="@id/dish_in_cart_counter" />
+
+    <TextView
+        android:id="@+id/dish_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/dish_cost_card"
+        app:layout_constraintStart_toStartOf="@id/dish_cost_card"
+        app:layout_constraintTop_toTopOf="@id/dish_cost_card"
+        tool:text="234.99" />
+
+    <com.example.semester.presentation.view.ItemCartCounter
+        android:id="@+id/dish_in_cart_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dish_calories" />
+
     <TextView
         android:id="@+id/dish_ingredient_title"
         android:layout_width="wrap_content"
@@ -126,7 +156,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/kitchen_scale" />
+        app:layout_constraintTop_toBottomOf="@id/dish_in_cart_counter" />
 
     <TextView
         android:id="@+id/dish_ingredient"

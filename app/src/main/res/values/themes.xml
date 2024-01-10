@@ -17,4 +17,14 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
+
+    <style name="cartDishPhotoImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">7dp</item>
+    </style>
+
+    <style name="ButtonNoShadow" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/counter_button_shape</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
 </resources>

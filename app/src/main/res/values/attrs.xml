@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ItemCartCounter">
+        <attr name="customTitle" format="string" />
+        <!-- Здесь ты можешь добавить другие пользовательские атрибуты -->
+    </declare-styleable>
+</resources>
