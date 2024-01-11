@@ -6,8 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.semester.data.models.Dish
 import com.example.semester.data.models.DishCart
-import com.example.semester.domain.DeleteDishFromCartUseCase
-import com.example.semester.domain.GetAllDishesUseCase
 import com.example.semester.domain.GetDishByIdUseCase
 import com.example.semester.domain.GetDishInCartByIdUseCase
 import com.example.semester.domain.UpdateDishInCartUseCase
@@ -17,11 +15,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DishViewModel @Inject constructor(
-    private val getAllDishesUseCase: GetAllDishesUseCase,
     private val getDishByIdUseCase: GetDishByIdUseCase,
     private val getDishInCartByIdUseCase: GetDishInCartByIdUseCase,
     private val upsertDishToCartUseCase: UpsertDishToCartUseCase,
-    private val deleteDishFromCartUseCase: DeleteDishFromCartUseCase,
     private val updateDishInCartUseCase: UpdateDishInCartUseCase
 ) : ViewModel() {
     private val _dish: MutableLiveData<UiState<Dish>> = MutableLiveData(UiState.Loading)

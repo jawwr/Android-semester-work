@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/dishCartFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -16,4 +16,8 @@
         android:id="@+id/dishCartFragment"
         android:name="com.example.semester.presentation.fragments.DishCartFragment"
         android:label="DishCartFragment" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.semester.presentation.fragments.MainFragment"
+        android:label="MainFragment" />
 </navigation>

@@ -5,6 +5,10 @@
     <color name="main_color">#389C9A</color>
     <color name="text_color">#424242</color>
     <color name="line_color">#424242</color>
+    <color name="light_yellow_color">#FEDB71</color>
+    <color name="white_back_color">#F9F9F9</color>
+    <color name="yellow_stroke_color">#E4C44F</color>
+    <color name="orange_stroke_color">#FFC700</color>
     <color name="close_button_color">#F9C6C6</color>
     <color name="dish_cost_color">#D9D9D9</color>
     <color name="pay_button_stroke_color">#FEDB71</color>
