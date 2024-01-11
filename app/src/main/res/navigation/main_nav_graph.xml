@@ -5,13 +5,14 @@
     app:startDestination="@id/mainFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.semester.presentation.fragments.HomeFragment"
-        android:label="HomeFragment" />
-    <fragment
         android:id="@+id/dishCardFragment"
         android:name="com.example.semester.presentation.fragments.DishCardFragment"
-        android:label="DishCardFragment" />
+        android:label="DishCardFragment">
+        <argument
+            android:name="dish_id"
+            app:argType="integer"
+            app:nullable="false" />
+    </fragment>
     <fragment
         android:id="@+id/dishCartFragment"
         android:name="com.example.semester.presentation.fragments.DishCartFragment"
@@ -19,5 +20,17 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.semester.presentation.fragments.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment">
+        <action
+            android:id="@+id/action_mainFragment_to_dishCartFragment"
+            app:destination="@id/dishCartFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_dishCardFragment"
+            app:destination="@id/dishCardFragment">
+            <argument
+                android:name="dish_id"
+                app:argType="integer"
+                app:nullable="false" />
+        </action>
+    </fragment>
 </navigation>

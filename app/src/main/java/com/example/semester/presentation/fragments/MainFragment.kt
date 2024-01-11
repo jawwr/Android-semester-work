@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.semester.R
@@ -19,7 +20,7 @@ import javax.inject.Inject
 
 class MainFragment : Fragment(R.layout.main_screen_fragment) {
     private val binding: MainScreenFragmentBinding by viewBinding()
-    private val adapter: CardAdapter = CardAdapter()
+    private val adapter: CardAdapter = CardAdapter(::onCardClick)
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -31,6 +32,9 @@ class MainFragment : Fragment(R.layout.main_screen_fragment) {
             showDishes(it)
         }
         viewModel.getAllDish()
+        binding.cart.setOnClickListener {
+            onCartClick()
+        }
     }
 
     override fun onAttach(context: Context) {
@@ -42,10 +46,29 @@ class MainFragment : Fragment(R.layout.main_screen_fragment) {
         is UiState.Success -> {
             val dishes = uiState.value
             adapter.submitList(dishes)
+
+            binding.progressCategories.visibility = View.GONE
         }
 
-        is UiState.Loading -> {}
-        is UiState.Failure -> {}
+        is UiState.Loading -> {
+            binding.progressCategories.visibility = View.VISIBLE
+        }
+
+        is UiState.Failure -> {
+            binding.progressCategories.visibility = View.GONE
+        }
+    }
+
+    private fun onCartClick() {
+        val direction = MainFragmentDirections.actionMainFragmentToDishCartFragment()
+        findNavController().navigate(direction)
+    }
+
+    private fun onCardClick(dish: Dish) {
+        val direction = MainFragmentDirections.actionMainFragmentToDishCardFragment(
+            dishId = dish.id
+        )
+        findNavController().navigate(direction)
     }
 
     private fun initRecycler() = with(binding.foodList) {

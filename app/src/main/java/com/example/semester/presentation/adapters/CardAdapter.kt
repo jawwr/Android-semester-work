@@ -9,14 +9,21 @@ import coil.load
 import com.example.semester.data.models.Dish
 import com.example.semester.databinding.MainScreenCardFragmentBinding
 
-class CardAdapter : ListAdapter<Dish, CardAdapter.CardViewHolder>(CardDiffUtil()) {
+class CardAdapter(
+    private val onCardClick: (Dish) -> Unit
+) : ListAdapter<Dish, CardAdapter.CardViewHolder>(CardDiffUtil()) {
     class CardViewHolder(
-        private val binding: MainScreenCardFragmentBinding
+        private val binding: MainScreenCardFragmentBinding,
+        private val onCardClick: (Dish) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(card: Dish) = with(binding) {
             foodName.text = card.title
             dishPrice.text = "${card.price}"
             foodImage.load(card.photoUrl)
+
+            root.setOnClickListener {
+                onCardClick(card)
+            }
         }
     }
 
@@ -32,7 +39,7 @@ class CardAdapter : ListAdapter<Dish, CardAdapter.CardViewHolder>(CardDiffUtil()
         val context = parent.context
         val inflater = LayoutInflater.from(context)
         val binding = MainScreenCardFragmentBinding.inflate(inflater, parent, false)
-        return CardViewHolder(binding)
+        return CardViewHolder(binding, onCardClick)
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {

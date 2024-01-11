@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import com.example.semester.R
@@ -19,6 +20,7 @@ import javax.inject.Inject
 
 class DishCardFragment : Fragment(R.layout.dish_card_fragment) {
     private val binding: DishCardFragmentBinding by viewBinding()
+    private val args: DishCardFragmentArgs by navArgs()
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -32,7 +34,10 @@ class DishCardFragment : Fragment(R.layout.dish_card_fragment) {
         viewModel.dishInCart.observe(viewLifecycleOwner) {
             showCart(it)
         }
-        viewModel.getDishById(1)
+        binding.toolbar.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
+        viewModel.getDishById(args.dishId)
     }
 
     override fun onAttach(context: Context) {

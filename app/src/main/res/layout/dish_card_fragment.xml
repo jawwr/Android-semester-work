@@ -32,7 +32,7 @@
         android:src="@drawable/dont_exist_dish_photo"
 
         app:layout_constraintCircle="@id/dish_card"
-        app:layout_constraintCircleRadius="230dp"
+        app:layout_constraintCircleRadius="275dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
     <View
         android:id="@+id/dish_card"
         android:layout_width="match_parent"
-        android:layout_height="470dp"
+        android:layout_height="550dp"
         android:layout_marginTop="200dp"
         android:background="@drawable/dish_card_shape"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -139,8 +139,8 @@
         android:id="@+id/dish_in_cart_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="80dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dish_calories" />
