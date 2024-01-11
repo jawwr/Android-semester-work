@@ -5,6 +5,7 @@ import com.example.semester.di.modules.AppBindsModule
 import com.example.semester.di.modules.DatabaseModule
 import com.example.semester.di.modules.NetworkModule
 import com.example.semester.di.modules.ViewModelModule
+import com.example.semester.presentation.fragments.MainFragment
 import com.example.semester.presentation.fragments.DishCardFragment
 import com.example.semester.presentation.fragments.DishCartFragment
 import dagger.BindsInstance
@@ -17,6 +18,7 @@ import javax.inject.Singleton
 interface AppComponent {
     fun inject(fragment: DishCardFragment)
     fun inject(fragment: DishCartFragment)
+    fun inject(fragment: MainFragment)
 
     @Component.Builder
     interface Builder {

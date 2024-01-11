@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="15dp"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/light_yellow_color">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/food_image"
+                android:layout_width="171dp"
+                android:layout_height="152dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/dish_example"
+                app:shapeAppearanceOverlay="@style/RoundedImageView"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="171dp"
+            android:layout_height="61dp"
+            android:layout_marginBottom="5dp"
+            style="@style/RoundedFrameLayout">
+
+            <TextView
+                android:id="@+id/food_name"
+                android:layout_width="169dp"
+                android:layout_height="match_parent"
+                android:text="Lorem ipsum dolor"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:shadowRadius="90"/>
+
+
+            <TextView
+                android:id="@+id/dish_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="299.9"
+                android:layout_gravity="bottom|center" />
+
+        </FrameLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RoundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="RoundedFrameLayout">
+        <item name="android:background">@drawable/rounded_background</item>
+    </style>
+
+    <style name="YellowLinearStroke">
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardBackgroundColor">@color/orange_stroke_color</item>
+    </style>
+</resources>
