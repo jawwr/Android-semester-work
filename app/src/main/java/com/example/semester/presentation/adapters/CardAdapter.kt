@@ -7,13 +7,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.semester.data.models.Dish
-import com.example.semester.databinding.MainScreenCardFragmentBinding
+import com.example.semester.databinding.MainScreenCardItemBinding
 
 class CardAdapter(
     private val onCardClick: (Dish) -> Unit
 ) : ListAdapter<Dish, CardAdapter.CardViewHolder>(CardDiffUtil()) {
     class CardViewHolder(
-        private val binding: MainScreenCardFragmentBinding,
+        private val binding: MainScreenCardItemBinding,
         private val onCardClick: (Dish) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(card: Dish) = with(binding) {
@@ -38,7 +38,7 @@ class CardAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
-        val binding = MainScreenCardFragmentBinding.inflate(inflater, parent, false)
+        val binding = MainScreenCardItemBinding.inflate(inflater, parent, false)
         return CardViewHolder(binding, onCardClick)
     }
 

@@ -32,6 +32,19 @@
         app:layout_constraintStart_toStartOf="@id/toolbar"
         app:layout_constraintTop_toTopOf="@id/toolbar" />
 
+    <ImageButton
+        android:id="@+id/orders"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@android:color/transparent"
+        android:elevation="11dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/order_icon"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="@id/toolbar"
+        app:layout_constraintTop_toTopOf="@id/toolbar" />
+
     <!-- рекуклер для карточек -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/food_list"
@@ -42,7 +55,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:spanCount="2"
-        tools:listitem="@layout/main_screen_card_fragment" />
+        tools:listitem="@layout/main_screen_card_item" />
 
     <ProgressBar
         android:id="@+id/progress_categories"

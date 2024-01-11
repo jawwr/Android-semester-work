@@ -37,10 +37,10 @@ class DishCartFragment : Fragment(R.layout.cart_fragment) {
             showDishes(it)
         }
         initRecycler()
-        viewModel.getAllDishInCart()
         binding.toolbar.setNavigationOnClickListener {
             requireActivity().onBackPressed()
         }
+        viewModel.getAllDishInCart()
     }
 
     override fun onAttach(context: Context) {
