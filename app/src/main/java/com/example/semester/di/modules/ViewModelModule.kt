@@ -6,6 +6,7 @@ import com.example.semester.di.viewModel.ViewModelFactory
 import com.example.semester.di.viewModel.ViewModelKey
 import com.example.semester.presentation.viewModel.DishCartViewModel
 import com.example.semester.presentation.viewModel.DishViewModel
+import com.example.semester.presentation.viewModel.MainDishCardViewModel
 import com.example.semester.presentation.viewModel.OrderViewModel
 import dagger.Binds
 import dagger.Module
@@ -30,4 +31,9 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(OrderViewModel::class)
     fun bindOrderViewModel(viewModel: OrderViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainDishCardViewModel::class)
+    fun bindMainDishCardViewModel(viewModel: MainDishCardViewModel): ViewModel
 }
