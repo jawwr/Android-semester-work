@@ -14,6 +14,8 @@ import com.example.semester.domain.DeleteDishFromCartUseCase
 import com.example.semester.domain.DeleteDishFromCartUseCaseImpl
 import com.example.semester.domain.DeleteDishesFromCartByIdInUseCase
 import com.example.semester.domain.DeleteDishesFromCartByIdInUseCaseImpl
+import com.example.semester.domain.FindAllOrdersUseCase
+import com.example.semester.domain.FindAllOrdersUseCaseImpl
 import com.example.semester.domain.GetAllCartDishUseCase
 import com.example.semester.domain.GetAllCartDishUseCaseImpl
 import com.example.semester.domain.GetAllDishesUseCase
@@ -24,10 +26,14 @@ import com.example.semester.domain.GetDishInCartByIdUseCase
 import com.example.semester.domain.GetDishInCartByIdUseCaseImpl
 import com.example.semester.domain.GetOrderByIdUseCase
 import com.example.semester.domain.GetOrderByIdUseCaseImpl
+import com.example.semester.domain.GetOrdersByIdInUseCase
+import com.example.semester.domain.GetOrdersByIdInUseCaseImpl
 import com.example.semester.domain.UpdateDishInCartUseCase
 import com.example.semester.domain.UpdateDishInCartUseCaseImpl
 import com.example.semester.domain.UpsertDishToCartUseCase
 import com.example.semester.domain.UpsertDishToCartUseCaseImpl
+import com.example.semester.domain.UpsertOrderUseCase
+import com.example.semester.domain.UpsertOrderUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -72,6 +78,15 @@ interface AppBindsModule {
 
     @Binds
     fun bindDeleteDishesFromCartByIdInUseCase(useCase: DeleteDishesFromCartByIdInUseCaseImpl): DeleteDishesFromCartByIdInUseCase
+
+    @Binds
+    fun bindUpsertOrderUseCase(useCase: UpsertOrderUseCaseImpl): UpsertOrderUseCase
+
+    @Binds
+    fun bindFindAllOrdersUseCase(useCase: FindAllOrdersUseCaseImpl): FindAllOrdersUseCase
+
+    @Binds
+    fun bindGetOrdersByIdInUseCase(useCase: GetOrdersByIdInUseCaseImpl): GetOrdersByIdInUseCase
 
     companion object {
         @Provides

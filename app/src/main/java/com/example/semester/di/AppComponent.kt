@@ -5,9 +5,10 @@ import com.example.semester.di.modules.AppBindsModule
 import com.example.semester.di.modules.DatabaseModule
 import com.example.semester.di.modules.NetworkModule
 import com.example.semester.di.modules.ViewModelModule
-import com.example.semester.presentation.fragments.MainFragment
 import com.example.semester.presentation.fragments.DishCardFragment
 import com.example.semester.presentation.fragments.DishCartFragment
+import com.example.semester.presentation.fragments.MainFragment
+import com.example.semester.presentation.fragments.OrderFragment
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -19,6 +20,7 @@ interface AppComponent {
     fun inject(fragment: DishCardFragment)
     fun inject(fragment: DishCartFragment)
     fun inject(fragment: MainFragment)
+    fun inject(fragment: OrderFragment)
 
     @Component.Builder
     interface Builder {

@@ -13,8 +13,7 @@ class DishCartAdapter(
     private val onDecreaseButtonClick: (DishCart) -> Unit,
     private val onIncreaseButtonClick: (DishCart) -> Unit,
     private val onCloseButtonClick: (DishCart) -> Unit
-) :
-    ListAdapter<DishCart, DishCartAdapter.DishCartViewHolder>(DishCartDiffUtil()) {
+) : ListAdapter<DishCart, DishCartAdapter.DishCartViewHolder>(DishCartDiffUtil()) {
     class DishCartViewHolder(
         private val binding: DishCartItemBinding,
         private val onDecreaseButtonClick: (DishCart) -> Unit,

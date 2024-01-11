@@ -35,6 +35,9 @@ class MainFragment : Fragment(R.layout.main_screen_fragment) {
         binding.cart.setOnClickListener {
             onCartClick()
         }
+        binding.orders.setOnClickListener {
+            onOrderClick()
+        }
     }
 
     override fun onAttach(context: Context) {
@@ -57,6 +60,11 @@ class MainFragment : Fragment(R.layout.main_screen_fragment) {
         is UiState.Failure -> {
             binding.progressCategories.visibility = View.GONE
         }
+    }
+
+    private fun onOrderClick() {
+        val direction = MainFragmentDirections.actionMainFragmentToOrderFragment()
+        findNavController().navigate(direction)
     }
 
     private fun onCartClick() {
